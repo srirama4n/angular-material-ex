@@ -1,0 +1,191 @@
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">New Utility Service</span>
+</mat-toolbar>
+
+<div class="container" *ngIf="!post" novalidate>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline" appearance="outline" appearance="outline">
+          <mat-label>Nick Name</mat-label>
+          <input formControlName="nickName" matInput placeholder="Nick Name" required>
+          <mat-error *ngIf="!formGroup.controls['nickName'].valid && formGroup.controls['nickName'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline" >
+          <mat-label>Abbreviation</mat-label>
+          <input matInput placeholder="Abbreviation" formControlName="abbreviation" required>
+          <mat-error *ngIf="!formGroup.controls['abbreviation'].valid && formGroup.controls['abbreviation'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="1" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let stateName of states" [value]="stateName">
+              {{stateName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-label class="app-label">Management</mat-label>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-label class="app-label">Automation</mat-label>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Class</mat-label>
+          <mat-select formControlName="class" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let className of classes" [value]="className">
+              {{className}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Owned By</mat-label>
+          <mat-select formControlName="ownedBy" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let ownedByName of ownedByList" [value]="ownedByName">
+              {{ownedByName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <input matInput placeholder="Version" formControlName="version">
+          <mat-error *ngIf="!formGroup.controls['version'].valid && formGroup.controls['version'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Wiki Address</mat-label>
+          <input matInput placeholder="Wiki Address" formControlName="wikiAddress">
+          <mat-error *ngIf="!formGroup.controls['wikiAddress'].valid && formGroup.controls['wikiAddress'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Managed By</mat-label>
+          <mat-select formControlName="managedBy" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let mangedByName of managedByList" [value]="mangedByName">
+              {{mangedByName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <input matInput placeholder="Phase" formControlName="phase">
+          <mat-error *ngIf="!formGroup.controls['phase'].valid && formGroup.controls['phase'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Purpose</mat-label>
+          <input matInput placeholder="Purpose" formControlName="purpose">
+          <mat-error *ngIf="!formGroup.controls['phase'].valid && formGroup.controls['phase'].touched">
+          {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <input matInput placeholder="Start Date" formControlName="startDate">
+          <mat-error *ngIf="!formGroup.controls['startDate'].valid && formGroup.controls['startDate'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <input matInput placeholder="Target Date" formControlName="targetDate">
+          <mat-error *ngIf="!formGroup.controls['targetDate'].valid && formGroup.controls['targetDate'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field class="form-element" appearance="outline">
+          <input matInput placeholder="Release Date" [matDatepicker]="picker" formControlName="releaseDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="!formGroup.controls['releaseDate'].valid && formGroup.controls['releaseDate'].touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="1" rowHeight="100px">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <span class="app-button-row">
+          <button mat-raised-button color="primary" type="submit" class="button" >Submit</button>
+        </span>
+        <span class="separator"></span>
+        <span class="app-button-row">
+          <button mat-raised-button color="primary" type="submit" class="button">Cancel</button>
+        </span>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </form>
+</div>
+
+<pre>
+  {{formGroup.value | json}}
+</pre>
